@@ -1,0 +1,1023 @@
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ILC Institut de Langues et de Communication</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary-color: #2563eb;
+            --secondary-color: #059669;
+            --accent-color: #f59e0b;
+            --danger-color: #dc2626;
+            --background-color: #f8fafc;
+            --card-background: #ffffff;
+            --text-primary: #1e293b;
+            --text-secondary: #64748b;
+            --border-radius: 12px;
+            --shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+            --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Poppins', sans-serif;
+            background-color: var(--background-color);
+            color: var(--text-primary);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header Styles */
+        header {
+            background-color: var(--card-background);
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 15px 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 22px;
+            font-weight: 700;
+            color: var(--primary-color);
+        }
+
+        .nav-menu {
+            display: none;
+        }
+
+        .menu-toggle {
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--text-primary);
+        }
+
+        nav ul {
+            list-style: none;
+            display: flex;
+            gap: 25px;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: var(--text-primary);
+            font-weight: 500;
+            padding: 8px 16px;
+            border-radius: 8px;
+            transition: var(--transition);
+        }
+
+        nav a:hover, nav a.active {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        /* Main Content */
+        main {
+            min-height: calc(100vh - 140px);
+            padding: 40px 0;
+        }
+
+        .page-content {
+            display: none;
+            animation: fadeIn 0.5s ease-in-out;
+        }
+
+        .page-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Home Section */
+        .home-section {
+            text-align: center;
+            padding: 60px 20px;
+        }
+
+        .home-section h1 {
+            font-size: 2.5rem;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .home-section p {
+            font-size: 1.125rem;
+            color: var(--text-secondary);
+            max-width: 700px;
+            margin: 0 auto 40px;
+        }
+
+        .home-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow-lg);
+        }
+
+        .card i {
+            font-size: 48px;
+            color: var(--primary-color);
+            margin-bottom: 20px;
+        }
+
+        .card h3 {
+            font-size: 1.25rem;
+            font-weight: 600;
+            margin-bottom: 15px;
+            color: var(--text-primary);
+        }
+
+        .card p {
+            color: var(--text-secondary);
+            font-size: 1rem;
+            line-height: 1.5;
+        }
+
+        /* Forms */
+        .form-container {
+            background: var(--card-background);
+            border-radius: var(--border-radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            max-width: 800px;
+            margin: 0 auto;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 500;
+            color: var(--text-primary);
+        }
+
+        input, select, textarea {
+            width: 100%;
+            padding: 14px;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            background-color: #f8fafc;
+            color: var(--text-primary);
+            font-size: 16px;
+            transition: var(--transition);
+        }
+
+        input:focus, select:focus, textarea:focus {
+            outline: none;
+            border-color: var(--primary-color);
+            box-shadow: 0 0 0 3px rgba(37, 99, 235, 0.1);
+        }
+
+        .btn {
+            background-color: var(--primary-color);
+            color: white;
+            border: none;
+            padding: 14px 28px;
+            border-radius: 8px;
+            font-size: 16px;
+            font-weight: 500;
+            cursor: pointer;
+            transition: var(--transition);
+            display: inline-block;
+        }
+
+        .btn:hover {
+            background-color: #1d4ed8;
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            background-color: var(--secondary-color);
+        }
+
+        .btn-secondary:hover {
+            background-color: #047857;
+        }
+
+        /* Tables */
+        .table-container {
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            background-color: var(--card-background);
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        th, td {
+            padding: 16px;
+            text-align: left;
+            border-bottom: 1px solid #e2e8f0;
+        }
+
+        th {
+            background-color: var(--primary-color);
+            color: white;
+            font-weight: 600;
+        }
+
+        tr:hover {
+            background-color: rgba(37, 99, 235, 0.05);
+        }
+
+        .action-btn {
+            padding: 8px 16px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 14px;
+            transition: var(--transition);
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+        }
+
+        .edit-btn {
+            background-color: var(--accent-color);
+            color: white;
+        }
+
+        .delete-btn {
+            background-color: var(--danger-color);
+            color: white;
+        }
+
+        .view-btn {
+            background-color: var(--primary-color);
+            color: white;
+        }
+
+        .action-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Stats Grid */
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .stat-card {
+            background: var(--card-background);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            box-shadow: var(--shadow);
+            text-align: center;
+        }
+
+        .stat-number {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: var(--primary-color);
+            margin-bottom: 12px;
+        }
+
+        .stat-label {
+            color: var(--text-secondary);
+            font-size: 14px;
+        }
+
+        /* Filter Bar */
+        .filter-bar {
+            display: flex;
+            gap: 15px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .search-input {
+            flex: 1;
+            min-width: 220px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--card-background);
+            padding: 20px;
+            text-align: center;
+            box-shadow: var(--shadow) inset;
+            margin-top: 40px;
+        }
+
+        /* Responsive Design */
+        @media (min-width: 768px) {
+            .nav-menu {
+                display: block;
+            }
+            
+            .menu-toggle {
+                display: none;
+            }
+        }
+
+        @media (max-width: 767px) {
+            .home-cards {
+                grid-template-columns: 1fr;
+            }
+            
+            .filter-bar {
+                flex-direction: column;
+            }
+            
+            .search-input {
+                width: 100%;
+            }
+        }
+
+        /* Notification */
+        .notification {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            padding: 16px 24px;
+            background-color: var(--secondary-color);
+            color: white;
+            border-radius: 8px;
+            box-shadow: var(--shadow-lg);
+            z-index: 10000;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-in-out;
+        }
+
+        .notification.show {
+            transform: translateX(0);
+        }
+
+        .notification.error {
+            background-color: var(--danger-color);
+        }
+
+        .notification.success {
+            background-color: var(--secondary-color);
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-language"></i>
+                    <span>ILC Institut de Langues et de Communication</span>
+                </div>
+                <button class="menu-toggle" id="menuToggle">
+                    <i class="fas fa-bars"></i>
+                </button>
+                <nav class="nav-menu" id="navMenu">
+                    <ul>
+                        <li><a href="#accueil" class="active">Accueil</a></li>
+                        <li><a href="#inscription">Inscription</a></li>
+                        <li><a href="#etudiants">Étudiants</a></li>
+                        <li><a href="#paiements">Paiements</a></li>
+                        <li><a href="#suivi">Suivi</a></li>
+                        <li><a href="#parametres">Paramètres</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <main class="container">
+        <!-- Accueil -->
+        <section id="accueil" class="page-content active home-section">
+            <h1>Bienvenue à l'ILC Institut de Langues et de Communication</h1>
+            <p>Gérez efficacement vos étudiants, paiements et activités administratives.</p>
+            
+            <div class="home-cards">
+                <div class="card" onclick="navigateTo('inscription')">
+                    <i class="fas fa-user-plus"></i>
+                    <h3>Inscription</h3>
+                    <p>Ajouter de nouveaux étudiants à l'institut</p>
+                </div>
+                <div class="card" onclick="navigateTo('etudiants')">
+                    <i class="fas fa-users"></i>
+                    <h3>Gestion des Étudiants</h3>
+                    <p>Voir et gérer la liste des étudiants inscrits</p>
+                </div>
+                <div class="card" onclick="navigateTo('paiements')">
+                    <i class="fas fa-money-bill-wave"></i>
+                    <h3>Paiements</h3>
+                    <p>Enregistrer et suivre les paiements des étudiants</p>
+                </div>
+                <div class="card" onclick="navigateTo('suivi')">
+                    <i class="fas fa-chart-line"></i>
+                    <h3>Suivi</h3>
+                    <p>Analyser les revenus et activités de l'institut</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Inscription -->
+        <section id="inscription" class="page-content">
+            <h2>Inscription des Étudiants</h2>
+            <div class="form-container">
+                <form id="studentForm">
+                    <div class="form-group">
+                        <label for="nom">Nom *</label>
+                        <input type="text" id="nom" required="" placeholder="Entrez votre nom">
+                    </div>
+                    <div class="form-group">
+                        <label for="prenom">Prénom *</label>
+                        <input type="text" id="prenom" required="" placeholder="Entrez votre prénom">
+                    </div>
+                    <div class="form-group">
+                        <label for="dateNaissance">Date de Naissance *</label>
+                        <input type="date" id="dateNaissance" required="" placeholder="jj/mm/aaaa">
+                    </div>
+                    <div class="form-group">
+                        <label for="classe">Classe *</label>
+                        <select id="classe" required="">
+                            <option value="">Sélectionnez une classe</option>
+                            <option value="Débutant">Débutant</option>
+                            <option value="Intermédiaire">Intermédiaire</option>
+                            <option value="Avancé">Avancé</option>
+                            <option value="Expert">Expert</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="email">Email *</label>
+                        <input type="email" id="email" required="" placeholder="exemple@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label for="password">Mot de passe *</label>
+                        <input type="password" id="password" required="" placeholder="Créez un mot de passe">
+                    </div>
+                    <div class="form-group">
+                        <label for="confirmPassword">Confirmer Mot de Passe *</label>
+                        <input type="password" id="confirmPassword" required="" placeholder="Confirmez votre mot de passe">
+                    </div>
+                    <button type="submit" class="btn">S'inscrire</button>
+                </form>
+            </div>
+        </section>
+
+        <!-- Étudiants -->
+        <section id="etudiants" class="page-content">
+            <h2>Gestion des Étudiants</h2>
+            <div class="filter-bar">
+                <input type="text" placeholder="Rechercher par nom..." class="search-input" id="searchStudent">
+                <select id="classFilter">
+                    <option value="">Toutes les classes</option>
+                    <option value="Débutant">Débutant</option>
+                    <option value="Intermédiaire">Intermédiaire</option>
+                    <option value="Avancé">Avancé</option>
+                    <option value="Expert">Expert</option>
+                </select>
+            </div>
+            <div class="table-container">
+                <table id="studentsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Photo</th>
+                            <th>Nom</th>
+                            <th>Prénom</th>
+                            <th>Date de Naissance</th>
+                            <th>Classe</th>
+                            <th>Email</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="studentsBody">
+                        <!-- Données insérées dynamiquement -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Paiements -->
+        <section id="paiements" class="page-content">
+            <h2>Gestion des Paiements</h2>
+            <div class="form-container">
+                <form id="paymentForm">
+                    <div class="form-group">
+                        <label for="studentIdPayment">Étudiant *</label>
+                        <select id="studentIdPayment" required="">
+                            <option value="">Sélectionnez un étudiant</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="montant">Montant (GNF) *</label>
+                        <input type="number" id="montant" step="100" min="0" required="" placeholder="0">
+                    </div>
+                    <div class="form-group">
+                        <label for="mois">Mois *</label>
+                        <select id="mois" required="">
+                            <option value="">Sélectionnez un mois</option>
+                            <option value="Janvier">Janvier</option>
+                            <option value="Février">Février</option>
+                            <option value="Mars">Mars</option>
+                            <option value="Avril">Avril</option>
+                            <option value="Mai">Mai</option>
+                            <option value="Juin">Juin</option>
+                            <option value="Juillet">Juillet</option>
+                            <option value="Août">Août</option>
+                            <option value="Septembre">Septembre</option>
+                            <option value="Octobre">Octobre</option>
+                            <option value="Novembre">Novembre</option>
+                            <option value="Décembre">Décembre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="motif">Motif *</label>
+                        <input type="text" id="motif" required="" placeholder="Frais d'inscription, mensualité, etc.">
+                    </div>
+                    <div class="form-group">
+                        <label for="datePaiement">Date *</label>
+                        <input type="date" id="datePaiement" required="">
+                    </div>
+                    <button type="submit" class="btn">Enregistrer le paiement</button>
+                </form>
+            </div>
+            <h3>Historique des paiements</h3>
+            <div class="table-container">
+                <table id="paymentsTable">
+                    <thead>
+                        <tr>
+                            <th>ID</th>
+                            <th>Étudiant</th>
+                            <th>Montant (GNF)</th>
+                            <th>Mois</th>
+                            <th>Motif</th>
+                            <th>Date</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="paymentsBody">
+                        <!-- Données insérées dynamiquement -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Suivi -->
+        <section id="suivi" class="page-content">
+            <h2>Suivi Administratif</h2>
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <div class="stat-number" id="totalRevenue">0</div>
+                    <div class="stat-label">Revenu Total (GNF)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="monthlyRevenue">0</div>
+                    <div class="stat-label">Revenu Mensuel (GNF)</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="totalStudents">0</div>
+                    <div class="stat-label">Nombre d'étudiants</div>
+                </div>
+                <div class="stat-card">
+                    <div class="stat-number" id="recentActivities">0</div>
+                    <div class="stat-label">Activités Récentes</div>
+                </div>
+            </div>
+            <h3>Dernières Activités</h3>
+            <div class="table-container">
+                <table id="activitiesTable">
+                    <thead>
+                        <tr>
+                            <th>Date</th>
+                            <th>Type</th>
+                            <th>Description</th>
+                        </tr>
+                    </thead>
+                    <tbody id="activitiesBody">
+                        <!-- Données insérées dynamiquement -->
+                    </tbody>
+                </table>
+            </div>
+        </section>
+
+        <!-- Paramètres -->
+        <section id="parametres" class="page-content">
+            <h2>Paramètres</h2>
+            <div class="form-container">
+                <form id="settingsForm">
+                    <div class="form-group">
+                        <label for="language">Langue</label>
+                        <select id="language">
+                            <option value="fr">Français</option>
+                            <option value="en">Anglais</option>
+                            <option value="de">Allemand</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="theme">Thème</label>
+                        <select id="theme">
+                            <option value="light">Clair</option>
+                            <option value="dark">Sombre</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="notifications">Notifications</label>
+                        <select id="notifications">
+                            <option value="true">Activer</option>
+                            <option value="false">Désactiver</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="btn">Sauvegarder</button>
+                </form>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2025 ILC Institut de Langues et de Communication. Tous droits réservés.</p>
+    </footer>
+
+    <div id="notification" class="notification"></div>
+
+    <script>
+        // Application State Management
+        const AppState = {
+            db: null,
+            students: [],
+            payments: [],
+            activities: [],
+            settings: {
+                language: 'fr',
+                theme: 'light',
+                notifications: true
+            },
+            nextStudentId: 1,
+            nextPaymentId: 1,
+            nextActivityId: 1,
+            async init() {
+                await this.initializeDatabase();
+                this.loadFromStorage();
+                this.applySettings();
+                this.renderAll();
+            },
+            async initializeDatabase() {
+                return new Promise((resolve, reject) => {
+                    const request = indexedDB.open('ILCLanguageSchoolDB', 1);
+                    
+                    request.onupgradeneeded = (event) => {
+                        const db = event.target.result;
+                        if (!db.objectStoreNames.contains('students')) {
+                            const studentStore = db.createObjectStore('students', { keyPath: 'id', autoIncrement: true });
+                            studentStore.createIndex('name_index', 'nom');
+                            studentStore.createIndex('class_index', 'classe');
+                        }
+                        if (!db.objectStoreNames.contains('payments')) {
+                            const paymentStore = db.createObjectStore('payments', { keyPath: 'id', autoIncrement: true });
+                            paymentStore.createIndex('student_index', 'etudiant');
+                            paymentStore.createIndex('month_index', 'mois');
+                        }
+                        if (!db.objectStoreNames.contains('activities')) {
+                            const activityStore = db.createObjectStore('activities', { keyPath: 'id', autoIncrement: true });
+                        }
+                    };
+                    
+                    request.onsuccess = (event) => {
+                        this.db = event.target.result;
+                        resolve();
+                    };
+                    
+                    request.onerror = (event) => {
+                        console.error('Database initialization failed:', event.target.errorCode);
+                        reject(event.target.errorCode);
+                    };
+                });
+            },
+            loadFromStorage() {
+                try {
+                    const storedData = localStorage.getItem('linguisticInstitute');
+                    if (storedData) {
+                        const data = JSON.parse(storedData);
+                        this.students = data.students || [];
+                        this.payments = data.payments || [];
+                        this.activities = data.activities || [];
+                        this.settings = data.settings || this.settings;
+                        
+                        // Find the highest IDs
+                        this.nextStudentId = Math.max(...this.students.map(s => s.id), 0) + 1;
+                        this.nextPaymentId = Math.max(...this.payments.map(p => p.id), 0) + 1;
+                        this.nextActivityId = Math.max(...this.activities.map(a => a.id), 0) + 1;
+                    }
+                } catch (error) {
+                    console.error('Error loading data:', error);
+                    this.resetData();
+                }
+            },
+            saveToStorage() {
+                try {
+                    const data = {
+                        students: this.students,
+                        payments: this.payments,
+                        activities: this.activities,
+                        settings: this.settings
+                    };
+                    localStorage.setItem('linguisticInstitute', JSON.stringify(data));
+                } catch (error) {
+                    console.error('Error saving data:', error);
+                }
+            },
+            applySettings() {
+                document.body.setAttribute('data-theme', this.settings.theme);
+                document.getElementById('language').value = this.settings.language;
+                document.getElementById('theme').value = this.settings.theme;
+                document.getElementById('notifications').value = this.settings.notifications.toString();
+            },
+            generateStudentId(studentData) {
+                // Format: ILC-[PREMIERES LETTRES NOM]-[PREMIERE LETTRE PRENOM]-[ANNEE]
+                const lastNameInitials = studentData.nom.substring(0, 3).toUpperCase();
+                const firstNameInitial = studentData.prenom.charAt(0).toUpperCase();
+                const currentYear = new Date().getFullYear();
+                return `ILC-${lastNameInitials}-${firstNameInitial}-${currentYear}`;
+            },
+            addStudent(studentData) {
+                const student = {
+                    ...studentData,
+                    id: this.nextStudentId++,
+                    studentId: this.generateStudentId(studentData),
+                    createdAt: new Date().toISOString()
+                };
+                this.students.push(student);
+                this.addActivity(`Nouvel étudiant inscrit: ${student.nom} ${student.prenom}`);
+                this.saveToStorage();
+                return student;
+            },
+            updateStudent(id, updatedData) {
+                const index = this.students.findIndex(s => s.id === id);
+                if (index !== -1) {
+                    this.students[index] = { ...this.students[index], ...updatedData };
+                    this.addActivity(`Étudiant mis à jour: ${this.students[index].nom} ${this.students[index].prenom}`);
+                    this.saveToStorage();
+                    return this.students[index];
+                }
+                return null;
+            },
+            deleteStudent(id) {
+                const student = this.students.find(s => s.id === id);
+                if (student) {
+                    this.students = this.students.filter(s => s.id !== id);
+                    this.addActivity(`Étudiant supprimé: ${student.nom} ${student.prenom}`);
+                    this.saveToStorage();
+                    return true;
+                }
+                return false;
+            },
+            addPayment(paymentData) {
+                const payment = {
+                    ...paymentData,
+                    id: this.nextPaymentId++,
+                    date: new Date(paymentData.date).toISOString()
+                };
+                this.payments.push(payment);
+                this.addActivity(`Paiement enregistré: ${payment.montant} GNF pour${payment.etudiant} (${payment.mois})`);
+                this.saveToStorage();
+                return payment;
+            },
+            deletePayment(id) {
+                const payment = this.payments.find(p => p.id === id);
+                if (payment) {
+                    this.payments = this.payments.filter(p => p.id !== id);
+                    this.addActivity(`Paiement supprimé: ${payment.montant} GNF pour ${payment.etudiant}`);
+                    this.saveToStorage();
+                    return true;
+                }
+                return false;
+            },
+            addActivity(description) {
+                const activity = {
+                    id: this.nextActivityId++,
+                    description,
+                    timestamp: new Date().toISOString()
+                };
+                this.activities.unshift(activity);
+                
+                // Keep only last 20 activities
+                if (this.activities.length > 20) {
+                    this.activities = this.activities.slice(0, 20);
+                }
+                
+                this.saveToStorage();
+                return activity;
+            },
+            getFilteredStudents(classFilter = '', searchQuery = '') {
+                let filtered = [...this.students];
+                
+                if (classFilter){
+                    filtered = filtered.filter(student => student.classe === classFilter);
+                }
+                
+                if (searchQuery) {
+                    const query = searchQuery.toLowerCase();
+                    filtered = filtered.filter(student => 
+                        student.nom.toLowerCase().includes(query) ||
+                        student.prenom.toLowerCase().includes(query) ||
+                        student.studentId.toLowerCase().includes(query)
+                    );
+                }
+                
+                return filtered;
+            },
+            getTotalRevenue() {
+                return this.payments.reduce((sum, payment) => sum + parseFloat(payment.montant || 0), 0);
+            },
+            getMonthlyRevenue(month, year = new Date().getFullYear()) {
+                return this.payments
+                    .filter(payment => {
+                        const paymentDate = new Date(payment.date);
+                        return paymentDate.getMonth() === month && paymentDate.getFullYear() === year;
+                    })
+                    .reduce((sum, payment) => sum + parseFloat(payment.montant || 0), 0);
+            },
+            renderAll() {
+                this.renderStudents();
+                this.renderPayments();
+                this.renderStats();
+                this.renderActivities();
+                this.updatePaymentDropdown();
+            },
+            showNotification(message, type = 'success') {
+                const notification = document.getElementById('notification');
+                notification.textContent = message;
+                notification.className = `notification ${type}`;
+                notification.classList.add('show');
+                
+                setTimeout(() => {
+                    notification.classList.remove('show');
+                }, 3000);
+            },
+            editStudent(id) {
+                const student = this.students.find(s => s.id === id);
+                if (!student) return;
+                // Fill form with student data
+                document.getElementById('nom').value = student.nom;
+                document.getElementById('prenom').value = student.prenom;
+                document.getElementById('dateNaissance').value = student.dateNaissance;
+                document.getElementById('classe').value = student.classe;
+                document.getElementById('email').value = student.email;
+                // Change form action to update
+                const form = document.getElementById('studentForm');
+                form.dataset.mode = 'update';
+                form.dataset.studentId = id;
+                // Scroll to form
+                form.scrollIntoView({ behavior: 'smooth' });
+                // Update page title
+                document.title = 'Modifier Étudiant - ILC Institut de Langues et de Communication';
+            }
+        };
+        // Navigation
+        function navigateTo(pageId) {
+            // Hide all pages
+            document.querySelectorAll('.page-content').forEach(page => {
+                page.classList.remove('active');
+            });
+            
+            // Show selected page
+            document.getElementById(pageId).classList.add('active');
+            
+            // Update active nav link
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+            });
+            event.target.classList.add('active');
+            // Update page title
+            const pageTitle = document.querySelector(`#${pageId} h2`)?.textContent || 'ILC Institut de Langues et de Communication';
+            document.title = `${pageTitle} - ILC Institut de Langues et de Communication`;
+        }
+        // Event Listeners
+        document.addEventListener('DOMContentLoaded', () => {
+            app.init();
+            // Navigation links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    const pageId = link.getAttribute('href').substring(1);
+                    navigateTo(pageId);
+                });
+            });
+            // Menu toggle for mobile
+            document.getElementById('menuToggle').addEventListener('click', () => {
+                const navMenu = document.getElementById('navMenu');
+                navMenu.style.display = navMenu.style.display === 'block' ? 'none' : 'block';
+            });
+            // Student Form
+            document.getElementById('studentForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(e.target);
+                const studentData = {
+                    nom: formData.get('nom'),
+                    prenom: formData.get('prenom'),
+                    dateNaissance: formData.get('dateNaissance'),
+                    classe: formData.get('classe'),
+                    email: formData.get('email'),
+                    password: formData.get('password')
+                };
+                
+                if (e.target.dataset.mode === 'update') {
+                    const id = parseInt(e.target.dataset.studentId);
+                    app.updateStudent(id, studentData);
+                    app.showNotification('Étudiant mis à jour avec succès !');
+                    e.target.removeAttribute('data-mode');
+                    e.target.removeAttribute('data-student-id');
+                } else {
+                    app.addStudent(studentData);
+                    app.showNotification('Étudiant enregistré avec succès !');
+                }
+                
+                e.target.reset();
+                app.renderAll();
+                document.title = 'ILC Institut de Langues et de Communication';
+            });
+            // Payment Form
+            document.getElementById('paymentForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(e.target);
+                const paymentData = {
+                    etudiant: formData.get('studentIdPayment'),
+                    montant: parseFloat(formData.get('montant')),
+                    mois: formData.get('mois'),
+                    motif: formData.get('motif'),
+                    date: formData.get('datePaiement')
+                };
+                
+                app.addPayment(paymentData);
+                app.showNotification('Paiement enregistré avec succès !');
+                e.target.reset();
+                app.renderAll();
+            });
+            // Settings Form
+            document.getElementById('settingsForm').addEventListener('submit', (e) => {
+                e.preventDefault();
+                
+                const formData = new FormData(e.target);
+                app.settings = {
+                    language: formData.get('language'),
+                    theme: formData.get('theme'),
+                    notifications: formData.get('notifications') === 'true'
+                };
+                
+                app.applySettings();
+                app.saveToStorage();
+                app.showNotification('Paramètres sauvegardés avec succès !');
+            });
+            // Theme change listener
+            document.getElementById('theme').addEventListener('change', (e) => {
+                document.body.setAttribute('data-theme', e.target.value);
+            });
+        });
+        // Make app globally available
+        window.app = app;
+    </script>
+</body>
+</html>
